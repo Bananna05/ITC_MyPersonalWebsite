@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<body>
+    <div class="banner"></div>
+</body>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Natural Numbers Calculations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            color: #333;
+            margin-top: 20px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"] {
+            padding: 5px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .btn {
+            background-color: #008CBA;
+        }
+        .btn:hover {
+            background-color: #007B9E;
+        }
+        .result {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            width: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Natural Numbers Calculations</h1>
+    <label for="number">Enter a number (N): </label>
+    <input type="number" id="number" min="1">
+    <button onclick="calculate()">Calculate</button>
+
+    <h2>Results:</h2>
+    <p id="factorialResult" class="result"></p>
+    <p id="sumResult" class="result"></p>
+    <p id="averageResult" class="result"></p>
+
+    <script>
+        function calculate() {
+            const n = parseInt(document.getElementById('number').value);
+            if (isNaN(n) || n < 1) {
+                alert('Please enter a valid number greater than 0');
+                return;
+            }
+
+            let factorial = 1;
+            let i = 1;
+            while (i <= n) {
+                factorial *= i;
+                i++;
+            }
+            document.getElementById('factorialResult').innerText = `Factorial of ${n} is: ${factorial}`;
+
+            let sum = 0;
+            let j = 1;
+            do {
+                sum += j;
+                j++;
+            } while (j <= n);
+            document.getElementById('sumResult').innerText = `Sum of first ${n} natural numbers is: ${sum}`;
+
+            let total = 0;
+            for (let k = 1; k <= n; k++) {
+                total += k;
+            }
+            const average = total / n;
+            document.getElementById('averageResult').innerText = `Average of first ${n} natural numbers is: ${average}`;
+        }
+    </script>
+    <div>
+        <a href="index.html">
+            <button class="btn">Back to Home</button>
+        </a>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Unit Conversion</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .title {
+            color: #333;
+            margin-top: 20px;
+        }
+        h2 {
+            color: #666;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"] {
+            padding: 5px;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            width: 250px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="title">Unit Conversion Tool</h1>
+<p id="currentTime"></p>
+<script src="script.js"></script>
+
+<!-- Celsius to Fahrenheit -->
+<h2>Celsius to Fahrenheit</h2>
+<label for="celsius">Celsius:</label>
+<input id="celsius" name="celsius" type="number">
+<button id="btnCelsiusToFahrenheit">Convert to Fahrenheit</button>
+<p id="fahrenheitResult" class="result"></p>
+
+<!-- Fahrenheit to Celsius -->
+<h2>Fahrenheit to Celsius</h2>
+<label for="fahrenheit">Fahrenheit:</label>
+<input id="fahrenheit" name="fahrenheit" type="number">
+<button id="btnFahrenheitToCelsius">Convert to Celsius</button>
+<p id="celsiusResult" class="result"></p>
+
+<!-- Meters to Feet -->
+<h2>Meters to Feet</h2>
+<label for="meters">Meters:</label>
+<input id="meters" name="meters" type="number">
+<button id="btnMetersToFeet">Convert to Feet</button>
+<p id="feetResult" class="result"></p>
+
+<!-- Feet to Meters -->
+<h2>Feet to Meters</h2>
+<label for="feet">Feet:</label>
+<input id="feet" name="feet" type="number">
+<button id="btnFeetToMeters">Convert to Meters</button>
+<p id="metersResult" class="result"></p>
+
+<script>
+    // Celsius to Fahrenheit Conversion
+    document.getElementById("btnCelsiusToFahrenheit").addEventListener("click", () => {
+        var celsius = parseFloat(document.getElementById("celsius").value);
+        if (!isNaN(celsius)) {
+            var fahrenheit = (celsius * 9/5) + 32;
+            document.getElementById("fahrenheitResult").innerText = celsius + "°C = " + fahrenheit.toFixed(2) + "°F";
+        } else {
+            document.getElementById("fahrenheitResult").innerText = "Please enter a valid number.";
+        }
+    });
+
+    // Fahrenheit to Celsius Conversion
+    document.getElementById("btnFahrenheitToCelsius").addEventListener("click", () => {
+        var fahrenheit = parseFloat(document.getElementById("fahrenheit").value);
+        if (!isNaN(fahrenheit)) {
+            var celsius = (fahrenheit - 32) * 5/9;
+            document.getElementById("celsiusResult").innerText = fahrenheit + "°F = " + celsius.toFixed(2) + "°C";
+        } else {
+            document.getElementById("celsiusResult").innerText = "Please enter a valid number.";
+        }
+    });
+
+    // Meters to Feet Conversion
+    document.getElementById("btnMetersToFeet").addEventListener("click", () => {
+        var meters = parseFloat(document.getElementById("meters").value);
+        if (!isNaN(meters)) {
+            var feet = meters * 3.28084;
+            document.getElementById("feetResult").innerText = meters + " meters = " + feet.toFixed(2) + " feet";
+        } else {
+            document.getElementById("feetResult").innerText = "Please enter a valid number.";
+        }
+    });
+
+    // Feet to Meters Conversion
+    document.getElementById("btnFeetToMeters").addEventListener("click", () => {
+        var feet = parseFloat(document.getElementById("feet").value);
+        if (!isNaN(feet)) {
+            var meters = feet / 3.28084;
+            document.getElementById("metersResult").innerText = feet + " feet = " + meters.toFixed(2) + " meters";
+        } else {
+            document.getElementById("metersResult").innerText = "Please enter a valid number.";
+        }
+    });
+</script>
+<div>
+    <a href="index.html">
+        <button class="btn">Back to Home</button>
+    </a>
+</div>
+</body>
+</html>
+
